@@ -39,19 +39,22 @@ void quickSort(int array[], int inicio, int fim){
   // TODO: Implemente o algoritmo "Quick Sort" para ordenação.
   // Dica: O método "trocar" pode ser útil ;)
 
-  int i = inicio, j = fim, pivo = array[(inicio + fim) /2];
-
-  while(i<=j){
-    while(array[i] < pivo && i < fim) i++;
-    while(array[j] > pivo && j > inicio) j--;
-    if(i<=j){
-      trocar(&array[i], &array[j]);
-      i++;
-      j--;
+  if (inicio < fim) {
+    int pivo = array[(inicio + fim) / 2];
+    int i = inicio;
+    int j = fim;
+    while (i <= j) {
+      while (array[i] < pivo) i++;
+      while (array[j] > pivo) j--;
+      if (i <= j) {
+        trocar(&array[i], &array[j]);
+        i++;
+        j--;
+      }
     }
+    quickSort(array, inicio, j);
+    quickSort(array, i, fim);
   }
-  if(j>inicio) quickSort(&array, inicio, j+1);
-  if(i<fim) quickSort(&array, i, fim);
 
 }
 

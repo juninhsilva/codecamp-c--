@@ -55,8 +55,16 @@ void bogoSort(int array[], int quantidade) {
   }
 }
 
-int buscaBinaria(int array[], int quantidade, int valor) {
+bool buscaBinaria(int array[], int quantidade, int valor) {
   //TODO: Implemente o algoritmo de Busca Binária para encontrar o valor.
+  int inicio =0, fim = quantidade -1, meio;
+  while (inicio<=fim){
+    meio = inicio + (fim - inicio)/2;
+    if(valor == array[meio]) return true;
+    else if(valor > array[meio]) inicio = meio+1;
+    else fim = meio-1;
+  }
+  return false;  
 }
 
 int main() {
@@ -74,6 +82,9 @@ int main() {
   bool encontrou = buscaBinaria(conteudos, quantidade, 777);
 
   //TODO: Criar as condições necessárias para imprimir "S" ou "N".
+
+  if(encontrou)printf("S");
+  else printf("N");
 
   return 0;
 }
